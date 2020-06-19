@@ -1,0 +1,1 @@
+export const apiDocument = (req, res)=>res.send("Api Document");
