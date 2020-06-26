@@ -1,0 +1,14 @@
+include mixins
+doctype html
+html
+    head
+        title  #{title} | #{siteName}
+    body
+        h1 #{movie.title}
+        h4 #{movie.summary}
+        ul
+            each item in movie.genres
+                li  #{item}
+                    
+
+        
