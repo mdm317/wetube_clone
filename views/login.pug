@@ -1,4 +1,8 @@
 extends layouts/main.pug
 
 block content
-    h1 Login
+    .form-container
+        form(action="/login", method= "post")
+            input(type="email", name="email", placeholder="email")
+            input(type="password", name="password", placeholder="password")
+            input(type="submit", value="Log in")

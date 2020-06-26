@@ -1,0 +1,11 @@
+extends layouts/main.pug
+
+block content
+    .form-container
+        form(action="/login", method= "post")
+            label(for='avator') avator
+            input(type="file",id='avator', name= avator)
+            input(type="text", name="name", placeholder = "Name")
+            input(type="email", name="email", placeholder="email")
+            input(type="submit", value="Update Profile")
+        a.form-container__link(href=routes.users+routes.changePassword) Change Password
