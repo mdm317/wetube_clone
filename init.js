@@ -1,8 +1,8 @@
 import app from "./app.js";
 import "./db.js"
 import dotenv from 'dotenv';
-import "./models/Video";
-import "./models/Comment";
+import "./models/Video.js";
+import "./models/Comment.js";
 dotenv.config();
 const PORT = process.env.PORT || 4000;
 
