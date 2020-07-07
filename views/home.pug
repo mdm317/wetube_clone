@@ -1,12 +1,5 @@
-extends layouts/main
-include mixins/videoBlock
+h1 TXT2HTML
 
-block content
-    .videos
-        each item in videos
-            +videoBlock({
-                id:item.id,
-                title:item.title,
-                views:item.views,
-                videoFile:item.fileUrl
-            })
+form.form-container(action="/upload" ,method="post",  enctype="multipart/form-data")
+    input(type="file", id="file", name="txtFile", required=true, accept=".txt")
+    input(type="submit", value="Convert!")
