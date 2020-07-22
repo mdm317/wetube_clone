@@ -12,13 +12,24 @@ const USER_DETAIL = "/:id";
 const EDIT_PROFILE = "/edit-profile";
 const CHANGE_PASSWORD = "/change-password";
 
+// Github
+
+const GITHUB = "/auth/github";
+const GITHUB_CALLBACK = "/auth/github/callback";
 // Videos
 
 const VIDEOS = "/videos";
 const UPLOAD = "/upload";
+const UPLOAD_URL = "/uploadurl";
+
 const VIDEO_DETAIL = "/:id";
 const EDIT_VIDEO = "/:id/edit";
 const DELETE_VIDEO = "/:id/delete";
+// API
+
+const API = "/api";
+const REGISTER_VIEW = "/:id/view";
+const ADD_COMMENT = "/:id/comment";
 
 const routes = {
   home: HOME,
@@ -26,7 +37,9 @@ const routes = {
   login: LOGIN,
   logout: LOGOUT,
   search: SEARCH,
-  users: USERS,
+  users: USERS, 
+  gitHub: GITHUB,
+  githubCallback: GITHUB_CALLBACK,
   userDetail: id => {
     if (id) {
       return `/users/${id}`;
@@ -38,6 +51,7 @@ const routes = {
   changePassword: CHANGE_PASSWORD,
   videos: VIDEOS,
   upload: UPLOAD,
+  uploadUrl:UPLOAD_URL,
   videoDetail: id => {
     if (id) {
       return `/videos/${id}`;
@@ -45,8 +59,23 @@ const routes = {
       return VIDEO_DETAIL;
     }
   },
-  editVideo: EDIT_VIDEO,
-  deleteVideo: DELETE_VIDEO
+  editVideo: id => {
+    if (id) {
+      return `/videos/${id}/edit`;
+    } else {
+      return EDIT_VIDEO;
+    }
+  },
+  deleteVideo: id => {
+    if (id) {
+      return `/videos/${id}/delete`;
+    } else {
+      return DELETE_VIDEO;
+    }
+  },
+  api: API,
+  registerView: REGISTER_VIEW,
+  addComment: ADD_COMMENT
 };
 
 export default routes;
