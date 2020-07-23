@@ -11,7 +11,7 @@ passport.use(
       clientID: process.env.GH_ID,
       clientSecret: process.env.GH_SECRET,
       callbackURL: process.env.PRODUCTION
-      ? `https://git.heroku.com/enigmatic-temple-89499.git/auth/github/callback`
+      ? `https://enigmatic-temple-89499.herokuapp.com/auth/github/callback`
       : `http://localhost:4000/auth/github/callback`
     },
         githubLoginCallback

@@ -32,18 +32,24 @@ export const getUpload = (req, res) =>
 export const postUpload = async(req, res) => {
   const {
     body: { title, description },
-    file:{path}
+    file: { location }
   } = req;
-  const newFile = await Video.create({
-    fileUrl:"/"+path,
-    title,
-    description,
-    creator: req.user.id
-  });
-  req.user.videos.push(newFile.id);
-  req.user.save();
-  res.redirect(routes.home);
-  res.redirect(routes.videoDetail(newFile.id));
+  try {
+    const newFile = await Video.create({
+      fileUrl:location,
+      title,
+      description,
+      creator: req.user.id
+    });
+    req.user.videos.push(newFile.id);
+    req.user.save();
+    res.redirect(routes.videoDetail(newFile.id));
+    
+  } catch (error) {
+    console.log(error);
+    res.redirect(routes.home);
+
+  }
 };
 export const postUploadUrl = async(req,res)=>{
 
@@ -83,7 +89,7 @@ export const getEditVideo = async (req, res) => {
   } = req;
   try {
     const video = await Video.findById(id);
-    if (video.creator !== req.user.id) {
+    if (video.creator.toString() !== req.user.id) {
       throw Error();
     } else {
       res.render("editVideo", { pageTitle: `Edit ${video.title}`, video });
