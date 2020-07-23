@@ -80,6 +80,7 @@ function getCurrentTime() {
 function setTotalTime() {
     const totalTimeString = formatDate(videoPlayer.duration);
     totalTime.innerHTML = totalTimeString;
+    console.log(totalTime);
     setInterval(getCurrentTime, 1000);
 }
 function handleEnded() {
@@ -108,11 +109,12 @@ const registerView = () => {
 };
   
 function init() {
+
     videoPlayer.volume = 0.5;
     playBtn.addEventListener("click", handlePlayClick);
     volumeBtn.addEventListener("click", handleVolumeClick);
     fullScrnBtn.addEventListener("click", goFullScreen);
-    videoPlayer.addEventListener("loadedmetadata", setTotalTime);
+    videoPlayer.addEventListener("loadeddata", setTotalTime);
     videoPlayer.addEventListener("ended", handleEnded);
     volumeRange.addEventListener("input", handleDrag);
 }
