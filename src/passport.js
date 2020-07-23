@@ -10,7 +10,9 @@ passport.use(
     new GithubStrategy({
       clientID: process.env.GH_ID,
       clientSecret: process.env.GH_SECRET,
-      callbackURL: "http://localhost:4000/auth/github/callback"
+      callbackURL: process.env.PRODUCTION
+      ? `https://git.heroku.com/enigmatic-temple-89499.git/auth/github/callback`
+      : `http://localhost:4000/auth/github/callback`
     },
         githubLoginCallback
     )
